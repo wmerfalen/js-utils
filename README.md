@@ -98,7 +98,7 @@ let larry_schema = '0.user.name'
 let john_schema = '2.user.name'
 console.log('Example dataset: ',obj)
 
-console.log(${xtract(obj,larry_schema)})    // prints "Larry Kenobi"
-console.log(${xtract(obj,john_schema)})     // prints "John Kenobi"
+console.log(xtract(obj,larry_schema))    // prints "Larry Kenobi"
+console.log(xtract(obj,john_schema))     // prints "John Kenobi"
 
 ```
