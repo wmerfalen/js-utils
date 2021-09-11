@@ -71,6 +71,34 @@ console.log(shuffle_for(data_set,250))
 
 ## Use dot notation to grab an element out of a deeply nested structure
 ```
-const {xtract} = require('@mentoc/utils').array.xtract
+const xtract = require('@mentoc/utils').array.xt
+/** Grab an element out of a deeply nested structure */
+let obj = [
+    {
+        user: {
+            id: 1,
+            name: "Larry Kenobi",
+        }
+    },
+    {
+        user: {
+            id: 2,
+            name: "Jerry Kenobi",
+        }
+    },
+    {
+        user: {
+            id: 3,
+            name: "John Kenobi",
+        }
+    }
+]
+
+let larry_schema = '0.user.name'
+let john_schema = '2.user.name'
+console.log('Example dataset: ',obj)
+
+console.log(${xtract(obj,larry_schema)})    // prints "Larry Kenobi"
+console.log(${xtract(obj,john_schema)})     // prints "John Kenobi"
 
 ```
