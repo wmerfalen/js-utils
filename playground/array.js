@@ -1,3 +1,22 @@
+{
+    /** Grabbing a random array element */
+    let {pluck_random} = require('../index').rand
+    let data = [1,2,3,4,5,6,7,8,9,10]
+    console.log('random array element from: ',data, ' is: ', pluck_random(data))
+}
+
+{
+const {seq} = require('../index').array
+
+/**
+ * The next line creates: [1,2,3,4,5,6,7]
+ */
+const data_set = seq(1,7)
+    console.log({data_set})
+    return
+}
+
+{
 const utils = require('../index')
 
 const pluck_random = utils.rand.pluck_random
@@ -17,3 +36,4 @@ console.log({array}, 'randomly selected: ',pluck_random(array))
 
 let sequential = utils.array.seq(min,max)
 console.log({sequential}, `between ${min} and ${max}`)
+}
