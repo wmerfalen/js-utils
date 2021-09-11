@@ -1,0 +1,24 @@
+{
+  "name": "utils",
+  "version": "1.0.0",
+  "description": "A library of useful functions.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wmerfalen/js-utils.git"
+  },
+  "keywords": [
+    "utils",
+    "utility",
+    "functions"
+  ],
+  "author": "William Merfalen",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/wmerfalen/js-utils/issues"
+  },
+  "homepage": "https://github.com/wmerfalen/js-utils#readme"
+}
