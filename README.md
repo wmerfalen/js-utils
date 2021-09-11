@@ -44,3 +44,33 @@ const {seq} = require('@mentoc/utils').array
  */
 const data_set = seq(1,7)
 ```
+
+## Shuffle an array
+```
+const {shuffle} = require('@mentoc/utils').rand
+
+const data_set = [1,2,3,4,5,6,7,8,9,10]
+
+console.log(shuffle(data_set))
+```
+
+## Shuffle an array by passing in more/less rounds
+Maybe you want the algorithm to shuffle more than just one time. For this, you can
+use the `shuffle_for` function. It accepts a number of rounds as it's second parameter.
+
+```
+const {shuffle_for} = require('@mentoc/utils').rand
+
+const data_set = [1,2,3,4,5,6,7,8,9,10]
+
+/**
+ * This is equivalent to calling shuffle(data_set) 250 times in a loop
+ */
+console.log(shuffle_for(data_set,250))
+```
+
+## Use dot notation to grab an element out of a deeply nested structure
+```
+const {xtract} = require('@mentoc/utils').array.xtract
+
+```

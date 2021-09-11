@@ -10,7 +10,11 @@
  * @param {number} end maximum value
  * @return {array} array of elements with first element equal to start and last element equal to end
  */
-const seq = require('./fragments/seq')
+const seq = (start,end) =>
+    Array.from(Array(end)).map(
+        _ => start++
+    )
+
 module.exports = {
     seq: seq,
 }
