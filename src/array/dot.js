@@ -1,20 +1,10 @@
 /**
- * PLEASE NOTE!
- * This file is named generators because it generates content. It does __NOT__ mean
- * we are using yield!
+ * Uses dot notation to grab an element from a deeply nested structure
+ * @param {object} data the object to crawl through
+ * @param {string} schema the string used to fetch info from data
+ * @return {mixed} this function will try to return the element according to the schema. if it doesn't exist, it will return null. this also means that if the element does exist and is null that there is no way to tell. Please use this only when you know the schema is exactly as you expect.
  */
-
-/**
- * Returns a sequential array of values with the first element of start with the last element of end
- * @param {number} start minimum value
- * @param {number} end maximum value
- * @return {array} array of elements with first element equal to start and last element equal to end
- */
-const seq = (start,end) =>
-    Array.from(Array(end)).map(
-        _ => start++
-    )
-
+const {xtract} = require('./fragments/xtract')
 module.exports = {
-    seq: seq,
+    xtract,
 }

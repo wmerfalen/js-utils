@@ -7,7 +7,7 @@
 }
 {
     /** Grab an element out of a deeply nested structure */
-    let xtract = require('../index').array.xt
+    let {xtract} = require('../index').array
     let obj = [
         {
             user: {

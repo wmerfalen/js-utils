@@ -4,7 +4,8 @@
   "description": "A library of useful functions.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pluck": "node ./pluck.js"
   },
   "repository": {
     "type": "git",

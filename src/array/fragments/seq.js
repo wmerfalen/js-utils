@@ -1,1 +1,1 @@
-module.exports = (start,end) => Array.from(Array(end)).map( _ => start++)
+module.exports.seq = (start,end) => Array.from(Array(end)).map( _ => start++);
