@@ -1,11 +1,15 @@
-const array_rand = require('./src/rng/array')
-const array_generators = require('./src/array/generators')
-const array_dot = require('./src/array/dot')
-const string_rand = require('./src/rng/string')
+const array_collection = [
+    require('./src/array/generators'),
+    require('./src/array/dot'),
+]
+const rand_collection = [
+    require('./src/rng/array'),
+    require('./src/rng/string'),
+]
 
 let array = {}
 let keys = new Set()
-for(let collection of [array_generators,array_dot]){
+for(let collection of array_collection){
     for(let key in collection){
         if(keys.has(key)){
             throw `Error! Namespace is polluted with duplicate entires for: "${key}" in array collection`
@@ -17,7 +21,7 @@ for(let collection of [array_generators,array_dot]){
 
 let rand = {}
 keys = new Set()
-for(let collection of [array_rand,string_rand]){
+for(let collection of rand_collection){
     for(let key in collection){
         if(keys.has(key)){
             throw `Error! Namespace is polluted with duplicate entires for: "${key}" in array collection`
