@@ -11,7 +11,40 @@ I am also a strong believer in *giving back to the community*.
 npm install @mentoc/utils
 ```
 
-# API
+# Before you copy and paste!
+Did you know, this library can export only the functions you need?
+Let's say we only want the `random_array` and `shuffle` functions.
+Easy. All we have to do is run this:
+```
+npm run pluck rand.random_array rand.shuffle
+```
+Now if you do an ls, you will notice that there is now a `lib.js` file.
+If you look at the contents of lib.js, you'll notice it only contains
+two exports (for both of the functions we exported). 
+
+This command uses *dot notation*. 
+
+If you just run `npm run pluck`, you will be greeted with this
+object structure:
+```
+{
+  rand: {
+    random_array: [Function],
+    pluck_random: [Function],
+    shuffle: [Function],
+    shuffle_for: [Function],
+    random_hex: [Function]
+  },
+  array: { seq: [Function], xtract: [Function] }
+}
+```
+
+If you want to export the `xtract` function, you would run:
+```
+npm run pluck array.xtract
+```
+
+# RNG API (for Arrays)
 
 ## Grabbing a random array element
 ```
@@ -35,15 +68,6 @@ let data_set = random_array(1,100,20)
 console.log(data_set)
 ```
 
-## Generate an array of sequential numbers
-```
-const {seq} = require('@mentoc/utils').array
-
-/**
- * The next line creates: [1,2,3,4,5,6,7]
- */
-const data_set = seq(1,7)
-```
 
 ## Shuffle an array
 ```
@@ -69,6 +93,8 @@ const data_set = [1,2,3,4,5,6,7,8,9,10]
 console.log(shuffle_for(data_set,250))
 ```
 
+
+# Dot notation API
 ## Use dot notation to grab an element out of a deeply nested structure
 ```
 const xtract = require('@mentoc/utils').array.xt
@@ -102,3 +128,31 @@ console.log(xtract(obj,larry_schema))    // prints "Larry Kenobi"
 console.log(xtract(obj,john_schema))     // prints "John Kenobi"
 
 ```
+
+# Array generation API
+## Generate an array of sequential numbers
+```
+const {seq} = require('@mentoc/utils').array
+
+/**
+ * The next line creates: [1,2,3,4,5,6,7]
+ */
+const data_set = seq(1,7)
+```
+
+# RNG API (for Strings)
+
+## Grabbing a random string of hexadecimal characters
+** PLEASE NOTE: THIS FUNCTION IS NOT CRYPTOGRAPHICALLY SECURE!!! **
+** DO NOT USE THIS FUNCTION FOR PASSWORD GENERATION OR __ANYTHING__ THAT NEEDS TO BE SECURE!!! **
+** YOU HAVE BEEN WARNED **
+```
+const {random_hex} = require('@mentoc/utils').rand
+
+const length = 16
+
+console.log(random_hex(16))	// Prints out 16 hex chars (without prepending zeroes)
+```
+
+
+
