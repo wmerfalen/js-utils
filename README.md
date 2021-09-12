@@ -220,7 +220,7 @@ const weird_object = {
  * Notice how we are passing in an array as opposed to a string for the 
  * second parameter here.
  */
-let pruned = lib.prune(weird_object,[first,0,second,'name'])
+let pruned = prune(weird_object,[first,0,second,'name'])
 console.log('removed the name of the object with id 2: ',pruned[first][0])
 
 // output of above console.log:
