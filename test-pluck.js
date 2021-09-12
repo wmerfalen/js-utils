@@ -43,6 +43,32 @@ if(typeof lib.prune !== 'undefined'){
     let weird_pruned = lib.prune(weird_data,schema)
     weird_pruned = weird_pruned[first][0]
     console.log('Attempting to remove jane doe:', weird_pruned)
+
+    {
+        const {prune} = lib.prune
+        const first = "-1-_ yes, @#!_this is a valid key\"\"'"
+        const second = '_9-1 j#'
+        const weird_object = {
+            "-1-_ yes, @#!_this is a valid key\"\"'": [
+                {
+                    'z -1 +4': {
+                        id: 1,
+                        name: 'john doe'
+                    },
+                    '_9-1 j#': {
+                        id: 2,
+                        name: 'jane doe',
+                    },
+                }
+            ]
+        }
+        /**
+         * Notice how we are passing in an array as opposed to a string for the 
+         * second parameter here.
+         */
+        let pruned = lib.prune(weird_object,[first,0,second,'name'])
+        console.log('removed the name of the object with id 2: ',pruned[first][0])
+    }
 }
 
 if(typeof lib.random_hex !== 'undefined'){

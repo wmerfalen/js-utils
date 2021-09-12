@@ -97,7 +97,7 @@ console.log(shuffle_for(data_set,250))
 # Dot notation API
 ## Use dot notation to grab an element out of a deeply nested structure
 ```
-const xtract = require('@mentoc/utils').array.xt
+const {xtract} = require('@mentoc/utils').array
 /** Grab an element out of a deeply nested structure */
 let obj = [
     {
@@ -126,6 +126,97 @@ console.log('Example dataset: ',obj)
 
 console.log(xtract(obj,larry_schema))    // prints "Larry Kenobi"
 console.log(xtract(obj,john_schema))     // prints "John Kenobi"
+
+```
+
+## Use dot notation to delete an element out of a deeply nested structure
+```
+const {prune} = require('@mentoc/utils').array
+/** Delete an element out of a deeply nested structure */
+let obj = [
+    {
+        user: {
+            id: 1,
+            name: "Larry Kenobi",
+        }
+    },
+    {
+        user: {
+            id: 2,
+            name: "Jerry Kenobi",
+        }
+    },
+    {
+        user: {
+            id: 3,
+            name: "John Kenobi",
+        }
+    }
+]
+console.log(prune(obj,'1.user.name'))   // removes name: "Jerry Kenobi" from object
+```
+
+# Alternate notation API
+There are times when you simply cannot pass in a dot notation in order to crawl
+a deeply nested structure. An object key can be *any* string value. This complicates
+matters and breaks the dot notation API. That is why the following functions accept
+either a `string` or an `array` as the second parameter.
+
+## xtract using an array schema
+```
+const {xtract} = require('@mentoc/utils').array
+const first = "-1-_ yes, @#!_this is a valid key\"\"'"
+const second = '_9-1 j#'
+const weird_object = {
+    "-1-_ yes, @#!_this is a valid key\"\"'": [
+        {
+            'z -1 +4': {
+                id: 1,
+                name: 'john doe'
+            },
+            '_9-1 j#': {
+                id: 2,
+                name: 'jane doe',
+            },
+        }
+    ]
+}
+/**
+ * Notice how we are passing in an array as opposed to a string for the 
+ * second parameter here.
+ */
+let jane_doe = xtract(weird_object,[first,0,second,'name'])
+console.log(jane_doe) // will print "jane doe"
+```
+
+## prune using an array schema
+```
+const {prune} = require('@mentoc/utils').array
+const first = "-1-_ yes, @#!_this is a valid key\"\"'"
+const second = '_9-1 j#'
+const weird_object = {
+    "-1-_ yes, @#!_this is a valid key\"\"'": [
+        {
+            'z -1 +4': {
+                id: 1,
+                name: 'john doe'
+            },
+            '_9-1 j#': {
+                id: 2,
+                name: 'jane doe',
+            },
+        }
+    ]
+}
+/**
+ * Notice how we are passing in an array as opposed to a string for the 
+ * second parameter here.
+ */
+let pruned = lib.prune(weird_object,[first,0,second,'name'])
+console.log('removed the name of the object with id 2: ',pruned[first][0])
+
+// output of above console.log:
+// removed the name of the object with id 2:  { 'z -1 +4': { id: 1, name: 'john doe' }, '_9-1 j#': { id: 2 } }
 
 ```
 
