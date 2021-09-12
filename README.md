@@ -154,5 +154,6 @@ const length = 16
 console.log(random_hex(16))	// Prints out 16 hex chars (without prepending zeroes)
 ```
 
-
+# Contributors
+William Merfalen
 
