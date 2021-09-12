@@ -1,5 +1,49 @@
 const lib = require('./lib')
 
+if(typeof lib.prune !== 'undefined'){
+    let obj = [
+        {
+            user: {
+                id: 1,
+                name: "Larry Kenobi",
+            }
+        },
+        {
+            user: {
+                id: 2,
+                name: "Jerry Kenobi",
+            }
+        },
+        {
+            user: {
+                id: 3,
+                name: "John Kenobi",
+            }
+        }
+    ]
+    console.log('Pruning 1.user.name: ',lib.prune(obj,'1.user.name'))
+
+    let weird_data = {
+        "of course you did, heh.3-_ ": [
+           {
+               "-1": {
+                   id: 2,
+                   "name ": 'john doe',
+               },
+               "-2": {
+                   id: 3,
+                   "name ": 'jane doe',
+               }
+           }
+        ]
+    }
+    const first = "of course you did, heh.3-_ "
+    const schema = [first,0,'-2','name ']
+    console.log('More complicated prune call on an object with weird keys. data set: ',{weird_data})
+    let weird_pruned = lib.prune(weird_data,schema)
+    weird_pruned = weird_pruned[first][0]
+    console.log('Attempting to remove jane doe:', weird_pruned)
+}
 
 if(typeof lib.random_hex !== 'undefined'){
     console.log(`random hex string of 16 chars: ${lib.random_hex(16)}`)
@@ -45,7 +89,26 @@ if(typeof lib.xtract !== 'undefined'){
     console.log('Example dataset: ',obj)
     console.log(`${larry_schema}: ${xtract(obj,larry_schema)}`)
     console.log(`${john_schema}: ${xtract(obj,john_schema)}`)
-
+    
+    const first = "-1-_ yes, @#!_this is a valid key\"\"'"
+    const second = '_9-1 j#'
+    const weird_object = {
+        "-1-_ yes, @#!_this is a valid key\"\"'": [
+            {
+                'z -1 +4': {
+                    id: 1,
+                    name: 'john doe'
+                },
+                '_9-1 j#': {
+                    id: 2,
+                    name: 'jane doe',
+                },
+            }
+        ]
+    }
+    console.log(`Using xtract with a weird schema and an array as the second parameter`,weird_object,weird_object[first][0])
+    let jane_doe = lib.xtract(weird_object,[first,0,second,'name'])
+    console.log(`Extracting jane doe: `,jane_doe)
 }
 
 if(typeof lib.pluck_random !== 'undefined'){

@@ -9,6 +9,7 @@ const manifest = {
     array: {
         seq: 'src/array/fragments/seq.js',
         xtract: 'src/array/fragments/xtract.js',
+        prune: 'src/array/fragments/prune.js',
     },
 }
 

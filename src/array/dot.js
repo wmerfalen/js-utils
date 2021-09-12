@@ -5,6 +5,8 @@
  * @return {mixed} this function will try to return the element according to the schema. if it doesn't exist, it will return null. this also means that if the element does exist and is null that there is no way to tell. Please use this only when you know the schema is exactly as you expect.
  */
 const {xtract} = require('./fragments/xtract')
+const {prune} = require('./fragments/prune')
 module.exports = {
     xtract,
+    prune,
 }

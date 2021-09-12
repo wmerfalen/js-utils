@@ -1,6 +1,6 @@
 const fs = require('fs')
 const {argv} = require('process')
-const xtract = require('./index').rand.xtract
+const xtract = require('./index').array.xtract
 const path = require('path')
 
 const START_AT = 2
@@ -16,10 +16,14 @@ if(fragments.length == 0){
     return
 }
 
+let invert_choice = fragments[0] === '--except'
 
 let script = []
 let keys = new Set()
 for(let fragment of fragments){
+    if(fragment.match(/^\-\-/)){    /** it's a CLI flag. skip it */
+        continue
+    }
     if(keys.has(fragment)){
         console.info(`Fragment has already been specified ("${fragment}"). Skipping...`)
         continue
