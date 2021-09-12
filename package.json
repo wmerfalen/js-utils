@@ -22,8 +22,5 @@
   "bugs": {
     "url": "https://github.com/wmerfalen/js-utils/issues"
   },
-  "homepage": "https://github.com/wmerfalen/js-utils#readme",
-  "dependencies": {
-    "@mentoc/xtract": "^1.0.3"
-  }
+  "homepage": "https://github.com/wmerfalen/js-utils#readme"
 }

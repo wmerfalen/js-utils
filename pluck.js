@@ -1,6 +1,6 @@
 const fs = require('fs')
 const {argv} = require('process')
-const xtract = require('@mentoc/xtract').xt
+const xtract = require('./index').rand.xtract
 const path = require('path')
 
 const START_AT = 2
