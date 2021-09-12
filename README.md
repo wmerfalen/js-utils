@@ -44,6 +44,14 @@ If you want to export the `xtract` function, you would run:
 npm run pluck array.xtract
 ```
 
+## Specifying the inverse
+You can use `npm run pluck-except <name>...` to pluck everything except
+for a few functions.
+```
+npm run pluck-except rand.shuffle
+```
+This will extract the entire library except for `shuffle`
+
 # RNG API (for Arrays)
 
 ## Grabbing a random array element
