@@ -1,4 +1,10 @@
 {
+    /** generate a random string of hex characters */
+    let {random_hex} = require('../index').rand
+    console.log(`Random hex string of 2 characters: ${random_hex(2)}`)
+    console.log(`Random hex string of 16 characters: ${random_hex(16)}`)
+}
+{
     /** shuffling an array */
     let {shuffle} = require('../index').rand
     let data = [1,2,3,4,5,6,7,8,9,10]
