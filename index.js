@@ -6,6 +6,7 @@ const collections = {
     rand: [
         require('./src/rng/array'),
         require('./src/rng/string'),
+        require('./src/rng/rand-between'),
     ],
     html: [
         require('./src/html/manager'),
