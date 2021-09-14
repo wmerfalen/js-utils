@@ -1,5 +1,19 @@
 const lib = require('./lib')
 
+if(typeof lib.strip_html !== 'undefined'){
+    const messages = [
+        '"><script>alert("xss");</script><div',
+        '<p> just some harmless html </p>',
+        '" onclick="console.log(document);"><script>alert("document");</script><div ',
+    ]
+    for(let i=0; i < messages.length; i++){
+        let msg = messages[i]
+        console.log(`Stripping html from: ${msg}`)
+        console.log(`Stripped: ${lib.strip_html(msg)}`)
+    }
+    return
+}
+
 if(typeof lib.prune !== 'undefined'){
     let obj = [
         {
