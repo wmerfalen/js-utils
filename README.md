@@ -242,9 +242,6 @@ const data_set = seq(1,7)
 # RNG API (for Strings)
 
 ## Grabbing a random string of hexadecimal characters
-** PLEASE NOTE: THIS FUNCTION IS NOT CRYPTOGRAPHICALLY SECURE!!! **
-** DO NOT USE THIS FUNCTION FOR PASSWORD GENERATION OR __ANYTHING__ THAT NEEDS TO BE SECURE!!! **
-** YOU HAVE BEEN WARNED **
 ```
 const {random_hex} = require('@mentoc/utils').rand
 
