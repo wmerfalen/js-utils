@@ -1,37 +1,26 @@
-const array_collection = [
-    require('./src/array/generators'),
-    require('./src/array/dot'),
-]
-const rand_collection = [
-    require('./src/rng/array'),
-    require('./src/rng/string'),
-]
+const collections = {
+    array: [
+        require('./src/array/generators'),
+        require('./src/array/dot'),
+    ],
+    rand: [
+        require('./src/rng/array'),
+        require('./src/rng/string'),
+    ],
+    html: [
+        require('./src/html/manager'),
+    ],
+}
 
-let array = {}
-let keys = new Set()
-for(let collection of array_collection){
-    for(let key in collection){
-        if(keys.has(key)){
-            throw `Error! Namespace is polluted with duplicate entires for: "${key}" in array collection`
+let lib = {}
+for(let category in collections){
+    if(typeof lib[category] === 'undefined'){
+        lib[category] = {}
+    }
+    for(let function_mapping of collections[category]){
+        for(let function_name in function_mapping){
+            lib[category][function_name] = function_mapping[function_name]
         }
-        array[key] = collection[key]
-        keys.add(key)
     }
 }
-
-let rand = {}
-keys = new Set()
-for(let collection of rand_collection){
-    for(let key in collection){
-        if(keys.has(key)){
-            throw `Error! Namespace is polluted with duplicate entires for: "${key}" in array collection`
-        }
-        rand[key] = collection[key]
-        keys.add(key)
-    }
-}
-
-module.exports = {
-    rand,
-    array,
-}
+module.exports = lib

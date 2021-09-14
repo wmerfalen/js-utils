@@ -11,6 +11,9 @@ const manifest = {
         xtract: 'src/array/fragments/xtract.js',
         prune: 'src/array/fragments/prune.js',
     },
+    html: {
+        strip_html: 'src/html/fragments/strip-html.js',
+    },
 }
 
 module.exports = manifest
