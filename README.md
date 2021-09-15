@@ -250,6 +250,42 @@ const length = 16
 console.log(random_hex(16))	// Prints out 16 hex chars (without prepending zeroes)
 ```
 
+
+# Using the pluck npm commands
+As stated above, you can export only the functions you need. This is all done for you
+through the pluck npm commands. Here are the available commands:
+### pluck
+Description: Pass in several dot-notation functions that you would like to export to `lib.js`
+Syntax: `npm run pluck category.name... [category.name-N]`
+Example: `npm run pluck rand.shuffle rand.rand_between`
+  
+### pluck-except
+Description: Export every function *EXCEPT* for the functions you specify
+Syntax: `npm run pluck-except category.name... [category.name-N]`
+Example: `npm run pluck-except rand.shuffle # exports the whole library except for rand.shuffle`
+
+### pluck-minified
+Description: Just like `pluck` only this time use the minified versions.
+
+### pluck-minified-except
+Description: Just like `pluck-except` only this time use the minified versions.
+
+### minify-export
+Description: If you've already got a `lib.js`, run this command to minify it into `lib.min.js`
+
+### export
+Description: Exports the entire library without minify.
+
+### export-minified
+Description: Just like `export`, only this time minify the results.
+
+
+
+# How to run the unit tests
+```
+npm run test
+```
+
 # Contributors
 William Merfalen
 
