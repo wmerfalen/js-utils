@@ -257,16 +257,12 @@ through the pluck npm commands. Here are the available commands:
 
 ### pluck
 **Description**: Pass in several dot-notation functions that you would like to export to `lib.js`
-
 **Syntax**: `npm run pluck category.name... [category.name-N]`
-
 **Example**: `npm run pluck rand.shuffle rand.rand_between`
   
 ### pluck-except
 **Description**: Export every function *EXCEPT* for the functions you specify
-
 **Syntax**: `npm run pluck-except category.name... [category.name-N]`
-
 **Example**: `npm run pluck-except rand.shuffle # exports the whole library except for rand.shuffle`
 
 ### pluck-minified
