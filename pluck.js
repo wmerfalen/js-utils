@@ -1,13 +1,51 @@
 const fs = require('fs')
-const {argv} = require('process')
+const {argv,exec} = require('process')
 const xtract = require('./index').array.xtract
 const prune = require('./index').array.prune
 const path = require('path')
+console.log(argv)
 
 const START_AT = 2
-let fragments = argv.splice(START_AT)
 const library = require('./index')
 const manifest = require('./manifest')
+let options = {
+    except: false,
+    minified: false,
+    all: false,
+}
+console.log(argv)
+for(let argc=1; argc < argv.length; argc++){
+    if(['--except','-v'].indexOf(argv[argc]) > -1){
+        options.except = true
+        continue
+    }
+    if(['--minified','-m'].indexOf(argv[argc]) > -1){
+        options.minified = true
+        continue
+    }
+    if(['--all','-a'].indexOf(argv[argc]) > -1){
+        options.all = true
+        continue
+    }
+}
+
+if(options.all){
+    let script = []
+    for(let category in manifest){
+        for(let func_name in manifest[category]){
+            let file = path.join(__dirname,manifest[category][func_name])
+            if(options.minified){
+                file = file.replace(/\.js$/,'.min.js')
+            }
+            script.push(fs.readFileSync(file).toString())
+        }
+    }
+    fs.writeFileSync('lib.js',script.join("\n"))
+    console.log('Files exported to lib.js')
+    return
+}
+
+let fragments = argv.slice(START_AT)
 if(fragments.length == 0){
     console.error("Please specify a function you would like to pluck")
     console.log('The available functions are available. Use dot-notation to grab each one.')
@@ -16,19 +54,22 @@ if(fragments.length == 0){
     console.error("Exiting...")
     return
 }
-
-let invert_choice = fragments[0] === '--except'
 let script = []
-if(invert_choice){
+if(options.except){
     let keep = library
-    fragments = fragments.splice(1)
     for(let fragment of fragments){
+        if(fragment.match(/^\-\-/)){
+            continue
+        }
         keep = prune(keep,fragment)
     }
     for(let category in keep){
         for(let func_name in keep[category]){
             console.log({category,func_name,manifest})
             let file = path.join(__dirname,manifest[category][func_name])
+            if(options.minified){
+                file = file.replace(/\.js$/,'.min.js')
+            }
             script.push(fs.readFileSync(file).toString())
         }
     }
@@ -44,6 +85,9 @@ if(invert_choice){
         }
         keys.add(fragment)
         let file = path.join(__dirname,xtract(manifest,fragment))
+        if(options.minified){
+            file = file.replace(/\.js$/,'.min.js')
+        }
         script.push(fs.readFileSync(file).toString())
     }
 }

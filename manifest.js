@@ -5,6 +5,7 @@ const manifest = {
         pluck_random: 'src/rng/fragments/pluck-random.js',
         shuffle_for: 'src/rng/fragments/shuffle-for.js',
         random_hex: 'src/rng/fragments/random-hex.js',
+        rand_between: 'src/rng/fragments/rand-between.js',
     },
     array: {
         seq: 'src/array/fragments/seq.js',

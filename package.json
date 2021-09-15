@@ -7,6 +7,11 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "pluck": "node ./pluck.js",
     "pluck-except": "node ./pluck.js --except",
+    "pluck-minified": "node ./pluck.js --minified",
+    "pluck-minified-except": "node ./pluck.js --minified --except",
+    "minify-export": "node ./node_modules/babel-minify/bin/minify.js ./lib.js -o lib.min.js",
+    "export": "node ./pluck.js --all",
+    "export-minified": "node ./pluck.js --all --minified",
     "test-pluck": "node ./test-pluck.js"
   },
   "repository": {
@@ -25,6 +30,7 @@
   },
   "homepage": "https://github.com/wmerfalen/js-utils#readme",
   "devDependencies": {
+    "babel-minify": "^0.5.1",
     "mocha": "^9.1.1"
   }
 }
