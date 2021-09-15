@@ -1,10 +1,12 @@
-# js-utils: a useful set of functions
+# js-utils
+A collection of **composable** utility functions. Take what you need, and uninstall the library.
+No more bloated utility libraries. Did I mention, I added a minify step?
 
 # Motivation
 I feel like there are bits of functionality that I need to use everyday in my javascript projects. 
-All the functionality I'm looking for isn't there or is inside another npm package. 
-This library provides those bits of functionality. 
-I am also a strong believer in *giving back to the community*.
+All the functionality I'm looking for isn't there or is inside another npm package. I **solved** the
+npm portion by allowing developers the option to extract only specific functions. This makes it so
+that developers are no longer tied to an NPM repo. Take the functions you need and uninstall the library.
 
 # Installation
 ```
@@ -288,5 +290,5 @@ npm run test
 ```
 
 # Contributors
-William Merfalen
-
+- William Merfalen (concept and initial coder)
+- A.J. O'neil (resident technologist and node enthusiast)
