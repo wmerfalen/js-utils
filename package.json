@@ -7,9 +7,10 @@
     "test": "./node_modules/mocha/bin/mocha tests/src/*/*.js",
     "pluck": "node ./pluck.js",
     "pluck-except": "node ./pluck.js --except",
+    "pluck-except-minified": "node ./pluck.js --except --minified",
     "pluck-minified": "node ./pluck.js --minified",
     "pluck-minified-except": "node ./pluck.js --minified --except",
-    "minify-export": "node ./node_modules/babel-minify/bin/minify.js ./lib.js -o lib.min.js",
+    "minify-export": "node ./node_modules/babel-minify/bin/minify.js ./dist/lib.js -o ./dist/lib.min.js",
     "export": "node ./pluck.js --all",
     "export-minified": "node ./pluck.js --all --minified"
   },
