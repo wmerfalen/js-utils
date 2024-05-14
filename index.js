@@ -7,6 +7,7 @@ const collections = {
   ],
   html: [require("./src/html/manager")],
   str: [require("./src/str/")],
+  number: [require('./src/number/')],
 };
 
 let lib = {};
